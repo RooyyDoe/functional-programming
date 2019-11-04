@@ -1,0 +1,64 @@
+{
+  "name": "functional-programming",
+  "version": "1.0.0",
+  "description": "Visualization of the collection",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RooyyDoe/functional-programming.git"
+  },
+  "author": "Roy Kuijper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RooyyDoe/functional-programming/issues"
+  },
+  "homepage": "https://github.com/RooyyDoe/functional-programming#readme",
+  "dependencies": {
+    "stylelint": "^11.1.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": "tab",
+      "no-descending-specificity": null
+    }
+  }
+}
