@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/RooyyDoe/functional-programming#readme",
   "dependencies": {
-    "stylelint": "^11.1.1"
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^18.2.0",
+    "eslint": "^6.5.1"
   },
   "eslintConfig": {
     "env": {
