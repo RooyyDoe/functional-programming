@@ -1,14 +1,14 @@
 # Functional Programming
 
-(Explaination/concept)
+As concept I want to show Which continent has the most objects out of different categories and what kind of categorie has the highest or lowest percentage. To do this I want to create an overview that shows every head categories in a radar chart. In this chart I want to make five circular grid types. The chart will make use of interactive styles like filtering on the categories or continents, but also annotating will be used in this chart to give extra information like percentage and difference between the continents.
 
-The whole process of creating this application will all be documented in the [wiki](https://github.com/RooyyDoe/frontend-applications/wiki) of my repository.
+The whole process of creating this application will all be documented in the [wiki](https://github.com/RooyyDoe/functional-programming/wiki) of my repository.
 
 ## Screenshots
 
-(Image)
+![Petal_Chart_Dark_Design_Grad_1](https://user-images.githubusercontent.com/40355914/68203378-ef4dbc00-ffc5-11e9-9a89-f38cf4e6d6b2.png)
 
-![Imgur]()
+![Petal_Chart_Dark_Design_Grad_1 – 1](https://user-images.githubusercontent.com/40355914/68203501-3cca2900-ffc6-11e9-834a-cd3142bd8f2f.png)
 
 ## Assignment
 
@@ -34,18 +34,18 @@ npm install
 
 **Run code**
 ```
-npm run dev
+*Still loading...*
 ```
 
 **Url for the application**
 
 ```
-localhost:5000 // host is now available
+*Still loading...*
 ```
 
 (Live demo if needed)
 
-**Demo** is also live at: https://frontend-applications-svelte.netlify.com/
+**Demo** is also live at: *Still loading...*
 
 ## API
 (API Call with explanation)
@@ -58,37 +58,11 @@ I made use of the following API:
 
 <details>
 
-
 ```
-	PREFIX dc: <http://purl.org/dc/elements/1.1/>
-	PREFIX dct: <http://purl.org/dc/terms/>
-	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-	PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-	
-	SELECT ?cho (SAMPLE(?title) AS ?uniqueTitle) (SAMPLE(?img) AS ?uniqueImage) (SAMPLE(?periode) AS ?uniquePeriod) (SAMPLE(?  herkomstLabel) AS ?uniqueHerkomstLabel) (SAMPLE(?jaartal) AS ?uniqueJaartal) WHERE {
-	   <https://hdl.handle.net/20.500.11840/termmaster4400> skos:narrower* ?concept .
-	   ?concept skos:prefLabel ?periode .
-	   VALUES ?periode { "Edo (Japanse periode)" }
-	  
-	   ?cho dc:title ?title .
-	   ?cho edm:isShownBy ?img .
-	  
-	   ?cho dct:created ?jaartal .
-	   filter(xsd:integer(?jaartal) >= 1611 && xsd:integer(?jaartal) <= 1868)
-	  
-	   ?cho dct:spatial ?herkomst .
-	   ?herkomst skos:prefLabel ?herkomstLabel .
-	   VALUES ?herkomstLabel { "Japan" } .
-	  
-	   FILTER langMatches(lang(?title), "ned")
-	} GROUP BY ?cho
+
 ```
 </details>
 
-In this query I am asking for different types of data. The most important data that I need from this database is the data from the time period 1611-1868, which is obtained with the filter **year period(jaartal)**. In this period I need every **Title** and **Image**. I am also filtering on the origin and period, so I want every object that is in this database that has the origin: 'Japan' and period: 'Edo (Japanse periode)'. 
-
-At first I wanted to give a detailed explanation of all the different objects that resulted from this query. However, due to the lack of information for certain objects, this was not possible. A lot of the objects did not have any description or some information was simply missing. When the database is further developed, more details can always be added to the visualization. For now the application will only include the title, the year and the image of the objects. 
 
 ## Sources
 * (Sources I got help from)
