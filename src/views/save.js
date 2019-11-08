@@ -49,15 +49,11 @@ const query2 = `
 		}`;
 
 
-// runQuery(url, query)
-// 		.then((data) => cleanData(data))
-// 		.then((cleanData => ))
-
 
 (async () => {
 	// makes variables with rawData results of continent and categories
 	let rawCategoryResults = await runQuery(url,query);
-	let rawContinentResults = await runQuery(url,query2);
+    let rawContinentResults = await runQuery(url,query2);
 
 	// let rawCategoryTotalResults = await runQuery(url,query3);
 	
@@ -76,6 +72,9 @@ const query2 = `
 	// foreach that loops over all the cleaned continent results
 	cleanedContinentResults.forEach(async continentUri => {
 		// foreach that loops over all the cleaned category results
+
+
+		
 		cleanedCategories.forEach(async categoryUri => {
 			// Using template literals to put the results of the foreach into the query
 			let catQuery = `
