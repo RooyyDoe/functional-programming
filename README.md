@@ -1,6 +1,6 @@
 # Functional Programming
 
-As concept I want to show Which continent has the most objects out of different categories and what kind of categorie has the highest or lowest percentage. To do this I want to create an overview that shows every head categories in a radar chart. In this chart I want to make five circular grid types. The chart will make use of interactive styles like filtering on the categories or continents, but also annotating will be used in this chart to give extra information like percentage and difference between the continents.
+I want to show for all the categories how the objects are distributed over the continents within a certain category. To do this I want to create an overview that shows all the main categories in a radar chart. In this chart I want to make five circular grid types displaying the amount of objects in percentage within a category. The continents will be displayed as different chart layers where each continent has a different color. The chart will make use of interactive styles such as filtering on the different categories or continents, but also annotating will be used in this chart to provide more information about the exact value of the percentage and the difference between the continents.
 
 The whole process of creating this application will all be documented in the [wiki](https://github.com/RooyyDoe/functional-programming/wiki) of my repository.
 
@@ -10,13 +10,27 @@ The whole process of creating this application will all be documented in the [wi
 
 ![Petal_Chart_Dark_Design_Grad_1 – 1](https://user-images.githubusercontent.com/40355914/68203501-3cca2900-ffc6-11e9-834a-cd3142bd8f2f.png)
 
+- [Functional Programming](#functional-programming)
+  - [Screenshots](#screenshots)
+  - [Assignment](#assignment)
+  - [Interaction](#interaction)
+  - [Installation](#installation)
+    - [Usage](#usage)
+    - [API](#api)
+  - [Sources](#sources)
+  - [Credits](#credits)
+- [License](#license)
+
 ## Assignment
 
 Create a data visualisation with d3 based on given data.
 
 ## Interactions
 
-
+- [ ] User is going to be able to **hover** over the continents and they will be highlighted when the cursor is hovering on the element.
+- [ ] User is going to be able to **filter** the chart by using the legenda.
+- [ ] User is going to be able to see **Annotations** when they click on the main categories.
+- [ ] User is going to be able to **Compair** two continents with each other by selecting them.
 
 ## Installation
 
@@ -34,20 +48,20 @@ npm install
 
 **Run code**
 ```
-*Still loading...*
+Run the index.html into your browser
 ```
 
 **Url for the application**
 
 ```
-*Still loading...*
+Still loading... (Will maybe come later)
 ```
 
 (Live demo if needed)
 
 **Demo** is also live at: *Still loading...*
 
-## API
+### API
 (API Call with explanation)
 
 This API allows you to get data of different historical events. This can be for example historic objects or pictures from all over the world. We all have obtained an individual endpoint to substract certain data from this database. 
@@ -58,18 +72,69 @@ I made use of the following API:
 
 <details>
 
-```
+The first query I made was the one where I asked for all the continents that are available in the database. When this query runs it will show every continent that is available in the collection database.
 
 ```
+
+//First Query for continents
+SELECT ?continent  WHERE {
+  <https://hdl.handle.net/20.500.11840/termmaster2> skos:narrower ?continent .
+}
+
+```
+
+<img width="1152" alt="Schermafdruk 2019-11-08 11 09 13" src="https://user-images.githubusercontent.com/40355914/68468585-9aee4a80-0218-11ea-90b6-bc101d0608bc.png">
+
+After this query I needed to get all the main categories that are available in the database. For this I used the thesaurus [Functionele Category](https://hdl.handle.net/20.500.11840/termmaster2802) and get all the narrower tags of this.
+
+```
+
+//Second Query for all the main categories
+SELECT ?categoryName ?mainCategory  WHERE {
+  <https://hdl.handle.net/20.500.11840/termmaster2802> skos:narrower ?mainCategory .
+  ?mainCategory skos:prefLabel ?categoryName .
+}
+
+```
+
+<img width="1151" alt="Schermafdruk 2019-11-08 11 18 12" src="https://user-images.githubusercontent.com/40355914/68468972-7646a280-0219-11ea-927f-6d9f3f5aa98c.png">
+
+For my concept I need to get a count of all the objects that are linked to the continent and in that continent to the main category.
+
+```
+
+//Last query to get a total count of the objects
+SELECT ?categoryName (COUNT(?category) AS ?categoryAmount) WHERE {
+  
+       <https://hdl.handle.net/20.500.11840/termmaster3> skos:narrower* ?continent .
+  	   ?obj dct:spatial ?continent .
+  
+  	   <https://hdl.handle.net/20.500.11840/termmaster2803> skos:narrower* ?category .
+       ?obj edm:isRelatedTo ?category .
+  	   ?category skos:prefLabel ?categoryName .
+  	   
+} GROUP BY ?categoryName
+
+```
+
+<img width="1154" alt="Schermafdruk 2019-11-08 11 26 15" src="https://user-images.githubusercontent.com/40355914/68469502-975bc300-021a-11ea-8095-39bbacaa6e61.png">
+
 </details>
 
+I had to make multiple queries to get the exact data that I needed for my concept. My idea was to clean the query data in javascript and add the results all back together so I can use it for the D3 library.
 
 ## Sources
-* (Sources I got help from)
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/) - Mostly used this site to get my sources from
+* [D3](https://d3js.org/) - This source I will mostly use for d3 related problems
+* [D3 In Depth](https://www.d3indepth.com/) - This source will go in further in the D3 possibilities
+* [Remaining Sources](https://github.com/RooyyDoe/functional-programming/wiki/Remaining-Sources) - My Remaining sources can be found at this page and I will also put in the real sources and not global ones.
 
 ## Credits
 
-* (People that helped me)
+* [Help from Thijs Spijker](https://github.com/iSirThijs) - Helped me with cleaning my data and explained different high-order functions. Next to this Thijs is still a good guy to talk with about problems u walk into and he will always be ready to help you out.
+* [Help from Wessel Smit](https://github.com/WesselSmit) — Wessel helped me with my concept and is also a good guy that you can ask certain programming problems and he will give hes opinion and how he will fix the problem.
+* [Help from Stefan Gerrits](https://github.com/StefanGerrits2) — We did a lot of programming together and looked at each others code to fix certain things.
+* [Help from Sjors Eveleens](https://github.com/Choerd) - He helped me look at my project in a different way when I was thinking way to difficult. He also gave me an option how I can turn my arrays into objects what helped me a lot.
 
 # License
 
