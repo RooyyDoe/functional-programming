@@ -49,11 +49,15 @@ const query2 = `
 		}`;
 
 
+// runQuery(url, query)
+// 		.then((data) => cleanData(data))
+// 		.then((cleanData => ))
+
 
 (async () => {
 	// makes variables with rawData results of continent and categories
 	let rawCategoryResults = await runQuery(url,query);
-    let rawContinentResults = await runQuery(url,query2);
+	let rawContinentResults = await runQuery(url,query2);
 
 	// let rawCategoryTotalResults = await runQuery(url,query3);
 	
@@ -72,9 +76,6 @@ const query2 = `
 	// foreach that loops over all the cleaned continent results
 	cleanedContinentResults.forEach(async continentUri => {
 		// foreach that loops over all the cleaned category results
-
-
-		
 		cleanedCategories.forEach(async categoryUri => {
 			// Using template literals to put the results of the foreach into the query
 			let catQuery = `
@@ -101,7 +102,7 @@ const query2 = `
 			let cleanResult = cleanData(catResults);
 			// If the result length is bigger than 0 it will put it into a variable that counts up the
 			// results
-			if (cleanResult.length > 0) {
+			if (cleanResult.length > 5) {
 				let finalCatResult = countCategoryResults(cleanResult);
 				// Presentation of what I have right now. with template literals.
 				console.log(`Continent ${continentUri} has ${finalCatResult} in categorie ${categoryUri}`);

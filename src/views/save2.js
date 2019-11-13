@@ -1,5 +1,4 @@
 
-
 const url = 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-33/sparql';
 
 const ContinentQuery = `
@@ -14,57 +13,36 @@ const ContinentQuery = `
 				<https://hdl.handle.net/20.500.11840/termmaster2> skos:narrower ?superCategory .
 		}`;
 
+// const query2 = `
+// 		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+// 		PREFIX dc: <http://purl.org/dc/elements/1.1/>
+// 		PREFIX dct: <http://purl.org/dc/terms/>
+// 		PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+// 		PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+// 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+// 		SELECT ?superCategory  WHERE {
+// 				<https://hdl.handle.net/20.500.11840/termmaster2802> skos:narrower ?superCategory .
+// 		}`;
+
 
 runQuery(url, ContinentQuery)
 	.then((rawContinentData) => cleanData(rawContinentData))
-	.then((filteringEmptyData) => filterEmptyResults(filteringEmptyData)) // Optional
 	.then((continentUriArray) => getCategories(continentUriArray))
 	.then((checkResults) => convertArrayToObject(checkResults))
-	// .then((testResult) => console.log(testResult))
-	.then((resultObject) => {
-		for (let key in resultObject){
-			let promises = []
-
-			resultObject[key].forEach((element) => {
-				let promise = getCountOfCategory(key, element);
-				promises.push(promise);
-			});
-			
-
-			console.log(promises);
-
-			Promise
-				.all(promises)
-				.then((countUpData) => countCategoryResults(countUpData))
-				// .then((array) => convertArrayToObject(array))
-				.then((test) => console.log(test))
-				
-				// .then((object) => { 
-				// 	console.log(object);
-				// 	console.log(resultObject[key]);
-				// 	resultObject[key] = object;
-				// 	// console.log(resultObject[key]);
-				// });
-
-		}
-
-		console.log(resultObject);
-		
-	})
-	
+	.then((resultObject) => getCountOfCategory(resultObject))
+	.then((testResult) => console.log(testResult))
 
 
 
+// runs the query returns array with objects
 async function runQuery(url, query){
 	let response = await fetch(url+'?query='+ encodeURIComponent(query) +'&format=json');
 	let json = await response.json();
 	return json.results.bindings;
 }	
 
-function filterEmptyResults(emptyResults) {
-	return emptyResults.slice(3,8);
-}
-
+// returns array with clean data
 function cleanData(rawResults) {
 	return rawResults.reduce((cleanResults, rawResult) => {
 		for(let key in rawResult) {
@@ -75,9 +53,9 @@ function cleanData(rawResults) {
 		}
 		return cleanResults;	
 	},[]); 
-	
 }
 
+// returns object with continentUri
 function getCategories(continentUriArray) {
 	return new Promise(async(resolve) => {
 		const categoryQuery = `
@@ -112,6 +90,7 @@ function convertArrayToObject(combineResults) {
 }
 
 
+// returns count
 function getCountOfCategory(continentUriArray, categoryUriArray) {
 	return new Promise(async(resolve) => {
 		let totalResult = `
@@ -122,7 +101,7 @@ function getCountOfCategory(continentUriArray, categoryUriArray) {
 			PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 			PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-			SELECT (COUNT(?category) AS ?categoryAmount) WHERE {
+			SELECT ?categoryName (COUNT(?category) AS ?categoryAmount) WHERE {
 				
 				<${continentUriArray}> skos:narrower* ?continent .
 					?obj dct:spatial ?continent .
@@ -135,20 +114,72 @@ function getCountOfCategory(continentUriArray, categoryUriArray) {
 
 		runQuery(url, totalResult)
 			.then((rawCountData) => cleanData(rawCountData))
-			// .then((countUpData) => countCategoryResults(countUpData))
-			.then((countResults) => resolve(countResults))
-			// .then((cleanCountData => combineCountWithCategory(continentUriArray, cleanCategoryData)))
-			// .then((cleanResults) => resolve(cleanResults));
+			.then(test => resolve(test))
+			// .then((cleanData) => countCategoryResults(cleanData))
+			// .then((count) => resolve(count));
 	});
 }
 
+function finalData(resultObject, getCountOfCategory) {
+	for (let key in resultObject){
+		let promises = [];
+
+		resultObject[key].forEach((element) => {
+			let promise = getCountOfCategory(key, element);
+			promises.push(promise);
+		});
+
+		console.log(promises);
+
+		Promise
+			.all(promises)
+			.then((array) => convertArrayToObject(array))
+			.then((object) => { 
+				console.log(object);
+				console.log(resultObject[key]);
+				resultObject[key] = object;
+				// console.log(resultObject[key]);
+			});
+
+	}
+}
+
 function countCategoryResults(results) {
-	return results.map(arr => {
-		return arr.reduce((a, b) => a + b, 0);
-	})
+	return results.reduce((totalObjects, currentObjects) => {
+		return totalObjects + currentObjects;
+	});
 }
 
 
+
+
+
+
+function finalData(resultObject, getCountOfCategory) {
+	for (let key in resultObject){
+		let promises = [];
+
+		resultObject[key].forEach((element) => {
+			let promise = getCountOfCategory(key, element);
+			promises.push(promise);
+		});
+
+		console.log(promises);
+
+		Promise
+			.all(promises)
+			.then((array) => convertArrayToObject(array))
+			.then((object) => { 
+				console.log(object);
+				console.log(resultObject[key]);
+				resultObject[key] = object;
+				// console.log(resultObject[key]);
+			});
+
+	}
+
+// 	console.log(resultObject);
+// }
 
 // (async () => {
 // 	// makes variables with rawData results of continent and categories
