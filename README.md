@@ -25,6 +25,8 @@ The whole process of creating this application will all be documented in the [wi
 
 Create a data visualisation with d3 based on given data.
 
+To take a look into my cleaning process, you need to follow the following [Cleaning Link](https://github.com/RooyyDoe/functional-programming/wiki/Cleaning-data)
+
 ## Interactions
 
 - [ ] User is going to be able to **hover** over the continents and they will be highlighted when the cursor is hovering on the element.
