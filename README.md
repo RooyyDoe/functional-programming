@@ -23,16 +23,16 @@ The whole process of creating this application will all be documented in the [wi
 
 ## Assignment
 
-Create a data visualisation with d3 based on given data.
+The assignment was to create a data visualisation with d3 based on given data.
 
-To take a look into my cleaning process, you need to follow the following [Cleaning Link](https://github.com/RooyyDoe/functional-programming/wiki/Cleaning-data)
+To take a look at my cleaning process, you need to follow the following [Cleaning Link](https://github.com/RooyyDoe/functional-programming/wiki/Cleaning-data)
 
 ## Interactions
 
 - [ ] User is going to be able to **hover** over the continents and they will be highlighted when the cursor is hovering on the element.
 - [ ] User is going to be able to **filter** the chart by using the legenda.
-- [ ] User is going to be able to see **Annotations** when they click on the main categories.
-- [ ] User is going to be able to **Compair** two continents with each other by selecting them.
+- [ ] User is going to be able to see **annotations** when they click on the main categories.
+- [ ] User is going to be able to **compare** two continents with each other by selecting them.
 
 ## Installation
 
@@ -87,7 +87,7 @@ SELECT ?continent  WHERE {
 
 <img width="1152" alt="Schermafdruk 2019-11-08 11 09 13" src="https://user-images.githubusercontent.com/40355914/68468585-9aee4a80-0218-11ea-90b6-bc101d0608bc.png">
 
-After this query I needed to get all the main categories that are available in the database. For this I used the thesaurus [Functionele Category](https://hdl.handle.net/20.500.11840/termmaster2802) and get all the narrower tags of this.
+After this query I needed to get all the main categories that are available in the database. For this I used the thesaurus [Functionele Category](https://hdl.handle.net/20.500.11840/termmaster2802) and get all the narrower tags from this.
 
 ```
 
@@ -123,20 +123,20 @@ SELECT ?categoryName (COUNT(?category) AS ?categoryAmount) WHERE {
 
 </details>
 
-I had to make multiple queries to get the exact data that I needed for my concept. My idea was to clean the query data in javascript and add the results all back together so I can use it for the D3 library.
+I had to make multiple queries to get the exact data that I needed for my concept. My idea was to clean the query data in javascript and add the results all back together so I could use it for the D3 library.
 
 ## Sources
-* [Mozilla Developer Network](https://developer.mozilla.org/en-US/) - Mostly used this site to get my sources from
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/) - I mostly used this site to obtain my sources
 * [D3](https://d3js.org/) - This source I will mostly use for d3 related problems
-* [D3 In Depth](https://www.d3indepth.com/) - This source will go in further in the D3 possibilities
-* [Remaining Sources](https://github.com/RooyyDoe/functional-programming/wiki/Remaining-Sources) - My Remaining sources can be found at this page and I will also put in the real sources and not global ones.
+* [D3 In Depth](https://www.d3indepth.com/) - This source goes deeper into the D3 possibilities
+* [Remaining Sources](https://github.com/RooyyDoe/functional-programming/wiki/Remaining-Sources) - My remaining sources can be found at this page and I will also add the real sources and not global ones.
 
 ## Credits
 
-* [Help from Thijs Spijker](https://github.com/iSirThijs) - Helped me with cleaning my data and explained different high-order functions. Next to this Thijs is still a good guy to talk with about problems u walk into and he will always be ready to help you out.
-* [Help from Wessel Smit](https://github.com/WesselSmit) — Wessel helped me with my concept and is also a good guy that you can ask certain programming problems and he will give hes opinion and how he will fix the problem.
+* [Help from Thijs Spijker](https://github.com/iSirThijs) - Helped me with cleaning my data and explained different high-order functions. Next to this Thijs is still a good guy to talk with about problems you come across and he will always be there to help you out.
+* [Help from Wessel Smit](https://github.com/WesselSmit) — Wessel helped me with my concept and is also a good guy that you can ask for help when having certain programming problems and he will give his opinion and explain how he would fix the problem.
 * [Help from Stefan Gerrits](https://github.com/StefanGerrits2) — We did a lot of programming together and looked at each others code to fix certain things.
-* [Help from Sjors Eveleens](https://github.com/Choerd) - He helped me look at my project in a different way when I was thinking way to difficult. He also gave me an option how I can turn my arrays into objects what helped me a lot.
+* [Help from Sjors Eveleens](https://github.com/Choerd) - He helped me look at my project in a different way when I was thinking way to difficult. He also gave me an option how I could turn my arrays into objects what helped me a lot.
 
 # License
 
