@@ -41,22 +41,11 @@ To take a look at my cleaning process, you need to follow the following [Cleanin
 git clone https://github.com/RooyyDoe/functional-programming.git
 ```
 
-**Npm packages installing**
-```
-npm install
-```
-
 ### Usage
 
 **Run code**
 ```
 Run the index.html into your browser
-```
-
-**Url for the application**
-
-```
-Still loading... (Will maybe come later)
 ```
 
 (Live demo if needed)
