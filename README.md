@@ -18,7 +18,7 @@ The whole process of creating this application will all be documented in the [wi
     - [Usage](#usage)
     - [API](#api)
   - [Sources](#sources)
-  - [Communication](#communication)
+  - [Credits](#credits)
 - [License](#license)
 
 ## Assignment
@@ -48,13 +48,13 @@ npm install
 
 **Run code**
 ```
-**Run the *index.html* into your browser**
+Run the index.html into your browser
 ```
 
 **Url for the application**
 
 ```
-*Still loading...* *(Will maybe come later)*
+Still loading... (Will maybe come later)
 ```
 
 (Live demo if needed)
@@ -72,11 +72,56 @@ I made use of the following API:
 
 <details>
 
-```
+The first query I made was the one where I asked for all the continents that are available in the database. When this query runs it will show every continent that is available in the collection database.
 
 ```
+
+//First Query for continents
+SELECT ?continent  WHERE {
+  <https://hdl.handle.net/20.500.11840/termmaster2> skos:narrower ?continent .
+}
+
+```
+
+<img width="1152" alt="Schermafdruk 2019-11-08 11 09 13" src="https://user-images.githubusercontent.com/40355914/68468585-9aee4a80-0218-11ea-90b6-bc101d0608bc.png">
+
+After this query I needed to get all the main categories that are available in the database. For this I used the thesaurus [Functionele Category](https://hdl.handle.net/20.500.11840/termmaster2802) and get all the narrower tags of this.
+
+```
+
+//Second Query for all the main categories
+SELECT ?categoryName ?mainCategory  WHERE {
+  <https://hdl.handle.net/20.500.11840/termmaster2802> skos:narrower ?mainCategory .
+  ?mainCategory skos:prefLabel ?categoryName .
+}
+
+```
+
+<img width="1151" alt="Schermafdruk 2019-11-08 11 18 12" src="https://user-images.githubusercontent.com/40355914/68468972-7646a280-0219-11ea-927f-6d9f3f5aa98c.png">
+
+For my concept I need to get a count of all the objects that are linked to the continent and in that continent to the main category.
+
+```
+
+//Last query to get a total count of the objects
+SELECT ?categoryName (COUNT(?category) AS ?categoryAmount) WHERE {
+  
+       <https://hdl.handle.net/20.500.11840/termmaster3> skos:narrower* ?continent .
+  	   ?obj dct:spatial ?continent .
+  
+  	   <https://hdl.handle.net/20.500.11840/termmaster2803> skos:narrower* ?category .
+       ?obj edm:isRelatedTo ?category .
+  	   ?category skos:prefLabel ?categoryName .
+  	   
+} GROUP BY ?categoryName
+
+```
+
+<img width="1154" alt="Schermafdruk 2019-11-08 11 26 15" src="https://user-images.githubusercontent.com/40355914/68469502-975bc300-021a-11ea-8095-39bbacaa6e61.png">
+
 </details>
 
+I had to make multiple queries to get the exact data that I needed for my concept. My idea was to clean the query data in javascript and add the results all back together so I can use it for the D3 library.
 
 ## Sources
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/) - Mostly used this site to get my sources from
