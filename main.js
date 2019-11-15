@@ -1,4 +1,4 @@
-import radarChart from './models/radarChart.js';
+import radarChart from './models/radarChart.js.js';
 
 const url = 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-33/sparql';
 
@@ -35,33 +35,37 @@ runQuery(url, ContinentQuery)
 		}); 
 		return continent;
 	}))
-	.then(async (mainData) => {
-	
-		let mainDataPromiseArray = mainData.map(async continent => {
-
-			let categoriesPromiseArray = continent.categories.map(async categorie => {
+	// Calls anonymous async function
+	.then(async (mainData) => { 
+		// maps over continent of mainData and puts this in a variable
+		let mainDataPromiseArray = mainData.map(async continent => { 
+			// maps over continent.categories and puts this in a variable
+			let categoriesPromiseArray = continent.categories.map(async categorie => { 
+				// Invokes getCountOfCategory() and put all the results in count.
 				let count = await getCountOfCategory(continent.uri, categorie.uri);
+				// Returns two objects into continent.categories 
+				// This will happen when the Promise.all has all the promises and
+				// the override of continent.categories has happend.
 				return {
 					uri: categorie.uri,
 					count: count
 				};
 	
 			});
-
+			// waits till all the promises are done and then puts them in a variable newCategories
 			let newCategories = await Promise.all(categoriesPromiseArray);
-
+			// Overrides continent.categories with the promises
 			continent.categories = newCategories;
-
+			// returns object
 			return continent;
 		});
-
+		// waits till all the promises are done after the ones of categories and then puts them in newContinents
 		let newContinents = await Promise.all(mainDataPromiseArray);
-
+		// This is getting returned and there will be a list of arrays in the continent.array
 		return newContinents;
-
+		// After this I am going to make a object of the array.
 	})
 	.then((mainData) => mainData.map(continent => {
-		// continent.categories.count = countCategoryResults(continent.categories.count);
 		continent.categories = continent.categories.map(category => {
 			category.count = countCategoryResults(category.count);
 			return category;
@@ -217,75 +221,3 @@ function getCountOfCategory(continentUri, categoryUri) {
 function countCategoryResults(results) {
 	return results.reduce((a, b) => a + b, 0);
 }
-
-// function convertArrayToObject(combineResults) {
-//	console.log(combineResults);
-
-// 	return Object.fromEntries(combineResults);
-// }
-
-// function combineContinentWithCategory(continentUriArray, categoryUriArray) {
-// 	return continentUriArray.reduce((newArray, continentUri) => {
-// 		let pair = [continentUri, categoryUriArray];
-// 		newArray.push(pair);
-// 		return newArray;
-// 	},[]);
-// }
-
-
-// (async () => {
-// 	// makes variables with rawData results of continent and categories
-// 	let rawCategoryResults = await runQuery(url,query);
-// 	let rawContinentResults = await runQuery(url,query2);
-
-// 	// let rawCategoryTotalResults = await runQuery(url,query3);
-	
-// 	// let cleanCategoryCount = cleanData(rawCategoryTotalResults);
-// 	// let totalResults = countCategoryResults(cleanCategoryCount);
-// 	// console.log(totalResults);
-
-// 	// A variable with cleaned data to use in the further cleaning process.
-// 	let cleanedContinentResults = cleanData(rawContinentResults);
-// 	let cleanedCategories = cleanData(rawCategoryResults);
-
-// 	// console.log(cleanData(rawCategoryResults));
-// 	// console.log(cleanData(rawContinentResults));
-// 	// console.log(cleanData(rawCategoryTotalResults));
-	
-// 	cleanedContinentResults.forEach(async continentUri => {
-// 		cleanedCategories.forEach(async categoryUri => {
-// 			let catQuery = `
-// 				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-// 				PREFIX dc: <http://purl.org/dc/elements/1.1/>
-// 				PREFIX dct: <http://purl.org/dc/terms/>
-// 				PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-// 				PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-// 				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-	
-// 				SELECT ?categoryName (COUNT(?category) AS ?categoryAmount) WHERE {
-					
-// 					<${continentUri}> skos:narrower* ?continent .
-// 						?obj dct:spatial ?continent .
-	
-// 					<${categoryUri}> skos:narrower* ?category .
-// 						?obj edm:isRelatedTo ?category .
-// 						?category skos:prefLabel ?categoryName .
-					
-// 			} GROUP BY ?categoryName`;
-// 			let catResults = await runQuery(url, catQuery );
-// 			let cleanResult = cleanData(catResults);
-// 			if (cleanResult.length > 5) {
-// 				let finalCatResult = countCategoryResults(cleanResult);
-// 				console.log(`Continent ${continentUri} has ${finalCatResult} in categorie ${categoryUri}`);
-// 			}
-// 		});
-// 	});
-
-// })();
-
-
-
-
-
-
-
