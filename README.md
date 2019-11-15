@@ -50,7 +50,7 @@ Run the index.html into your browser
 
 (Live demo if needed)
 
-**Demo** is also live at: *Still loading...*
+**Demo** is also live at: https://rooyydoe.github.io/functional-programming/
 
 ### API
 (API Call with explanation)
