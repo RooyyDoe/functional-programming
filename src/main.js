@@ -82,28 +82,28 @@ runQuery(url, ContinentQuery)
 	}))
 	.then((mainData) => mainData.map(continent => {
 		for (let i = 0; i < continent.categories.length; i++) {
-			continent.categories[i].test = continent.categories[i].count / continent.count;
+			continent.categories[i].percentage = continent.categories[i].count / continent.count;
 		}	
 		continent.categories = continent.categories.map(categories => {
 			return {
 				uri: categories.uri,
 				count: categories.count,
-				percentage: categories.test
+				percentage: categories.percentage
 			};
 		
 		});
 		return continent;
 	}))
 	.then((mainData) => mainData.map(continent => {
-		const test = [];
+		const newArray = [];
 		continent.categories = continent.categories.map(categories => {
 			let obj = {
 				axis: categories.uri,
 				value: categories.percentage
 			};
-			test.push(obj); 
+			newArray.push(obj); 
 		});
-		return test;	
+		return newArray;	
 	}))
 	// .then((mainData)=> console.log(mainData))
 	.then((cleanData) => {
@@ -130,7 +130,7 @@ runQuery(url, ContinentQuery)
 		};
 		//Call function to draw the Radar chart
 		radarChart('.radarChart', data, radarChartOptions);
-	})
+	});
 	
 
 
