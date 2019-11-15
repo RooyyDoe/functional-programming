@@ -1,4 +1,4 @@
-import radarChart from './models/radarChart.js.js';
+import radarChart from './models/radarChart.js';
 
 const url = 'https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-33/sparql';
 
