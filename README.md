@@ -27,10 +27,10 @@ The whole process of creating this application will all be documented in the [wi
 ## Resit
 
 The assignments that I needed to do for my resit: 
-* Making clean `.then` chain
-* Add ES6 Modules in my project
-* Changing my `For` loop functions into ES6 
-* Getting all the names of the categories
+* Making clean `.then` chain [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Add ES6 Modules in my project [explained](https://github.com/RooyyDoe/functional-programming/wiki/ES6-Modules), [in depth](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Changing my `For` loop functions into ES6 [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Getting all the names of the categories [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
 * Documenting ES6 Modules and d3.js
 
 ## Assignment
