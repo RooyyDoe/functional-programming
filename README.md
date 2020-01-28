@@ -14,6 +14,7 @@ The whole process of creating this application will all be documented in the [wi
 
 - [Functional Programming](#functional-programming)
   - [Screenshots](#screenshots)
+  - [Resit](#resit)
   - [Assignment](#assignment)
   - [Interaction](#interaction)
   - [Installation](#installation)
@@ -23,7 +24,7 @@ The whole process of creating this application will all be documented in the [wi
   - [Credits](#credits)
 - [License](#license)
 
-## Herkansing
+## Resit
 
 The assignments that I needed to do for my resit: 
 * Making clean `.then` chain
