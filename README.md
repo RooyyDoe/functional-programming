@@ -8,10 +8,13 @@ The whole process of creating this application will all be documented in the [wi
 
 ![Petal_Chart_Dark_Design_Grad_1](https://user-images.githubusercontent.com/40355914/68203378-ef4dbc00-ffc5-11e9-9a89-f38cf4e6d6b2.png)
 
-![Petal_Chart_Dark_Design_Grad_1 – 1](https://user-images.githubusercontent.com/40355914/68203501-3cca2900-ffc6-11e9-834a-cd3142bd8f2f.png)
+
+**Uiteindelijke versie**
+![]()
 
 - [Functional Programming](#functional-programming)
   - [Screenshots](#screenshots)
+  - [Resit](#resit)
   - [Assignment](#assignment)
   - [Interaction](#interaction)
   - [Installation](#installation)
@@ -20,6 +23,15 @@ The whole process of creating this application will all be documented in the [wi
   - [Sources](#sources)
   - [Credits](#credits)
 - [License](#license)
+
+## Resit
+
+The assignments that I needed to do for my resit: 
+* Making clean `.then` chain [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Add ES6 Modules in my project [explained](https://github.com/RooyyDoe/functional-programming/wiki/ES6-Modules), [in depth](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Changing my `For` loop functions into ES6 [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Getting all the names of the categories [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
+* Documenting ES6 Modules and d3.js
 
 ## Assignment
 
