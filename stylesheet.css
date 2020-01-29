@@ -1,11 +1,43 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
+    font-family: 'Bebas Neue', cursive;
+    background-color: #7F828A;
     font-weight: 300;
     fill: #234234;
-    text-align: center;
-    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
     cursor: default;
+}
+
+.wrapper > h1 {
+    padding: 0 0 0 1em;
+    position: absolute;
+    margin-top: -2.3em;
+    letter-spacing: .2em;
+}
+
+.wrapper {
+    background-color: #DFE4F5;
+    width: 90%;
+    padding: 3.3em 0;
+    margin: 2em auto;
+    box-shadow: -2px 31px 30px -11px rgba(0,0,0,0.75);
+}
+
+.buttonWrapper {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.buttonWrapper > h1 {
+    border-top: 3px solid #686A74;
+    color: black;
+    margin-top: -.2em;
+    padding: 1em 2em 0 0;
+    cursor: pointer;
+}
+
+.buttonWrapper > h1:hover {
+    border-top: 3px solid black;
 }
 
 .legend {
@@ -15,4 +47,34 @@ body {
 
 .tooltip {
     fill: #333333;
+}
+
+.legenda {
+    margin-left: 2em;
+    position: absolute;
+    padding: 1em;
+    text-align: center;
+    background-color: #DFE4F5;
+    box-shadow: -2px 31px 30px -11px rgba(0,0,0,0.75);
+    float: left;
+}
+
+.afrika {
+    color: #4D5B23;
+}
+
+.eurazie {
+    color: #EDC951;
+}
+
+.amerika {
+    color: #002533;
+}
+
+.oceanie {
+    color: #00A0B0;
+}
+
+.azie {
+    color: #CC333F;
 }

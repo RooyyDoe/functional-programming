@@ -8,16 +8,30 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 		
-		
 	
 	</head>
 	<body>
-
-		<h1>Inventarisation of objects in collection</h1> 
-		<div class="radarChart"></div>
-
-		<script type="module" src="./models/radarChart.js"></script>	
-
+		<div class="wrapper">
+			<h1>Inventarisation of objects in collection</h1> 
+			<div class="legenda"> 
+				<h2>continents:</h2>
+				<p class="afrika">Afrika</p>
+				<p class="azie">Azië</p>
+				<p class="eurazie">Eurazië</p>
+				<p class="amerika">Amerika</p>
+				<p class="oceanie">Oceanië</p>
+			</div>
+			
+			<div class="radarChart"></div>
+		</div>
+		<div class="buttonWrapper">
+			<h1>Afrika</h1>
+			<h1>Asia</h1>
+			<h1>Oceania</h1>
+			<h1>America</h1>
+			<h1>Eurazie</h1>
+		</div>
+		<script type="module" src="./modules/radarChart.js"></script>	
 		<script type="module" src="main.js"></script>
 	</body>
 </html>
