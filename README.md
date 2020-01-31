@@ -10,7 +10,7 @@ The whole process of creating this application will all be documented in the [wi
 
 
 **Uiteindelijke versie**
-![]()
+<img width="1337" alt="Schermafdruk 2020-01-31 11 27 19" src="https://user-images.githubusercontent.com/40355914/73532420-f184b280-441c-11ea-8d35-3622a52be4cf.png">
 
 - [Functional Programming](#functional-programming)
   - [Screenshots](#screenshots)
@@ -31,7 +31,7 @@ The assignments that I needed to do for my resit:
 * Add ES6 Modules in my project [explained](https://github.com/RooyyDoe/functional-programming/wiki/ES6-Modules), [in depth](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
 * Changing my `For` loop functions into ES6 [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
 * Getting all the names of the categories [explained](https://github.com/RooyyDoe/functional-programming/wiki/Resit-Functional-Cleaning)
-* Documenting ES6 Modules and d3.js
+* Documenting ES6 Modules and d3.js [explained](https://github.com/RooyyDoe/functional-programming/wiki/D3-code-breakdown)
 
 ## Assignment
 
